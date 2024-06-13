@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:20:21 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/13 20:22:15 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/13 21:27:13 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	is_sorted(t_list **a, t_list **b)
 		}
 		tested = tested->next;
 	}
-	ft_printf("The list is sorted !\n");
+	//ft_printf("The list is sorted !\n");
 	return (1);
 }
 void	get_user_input(t_list **a, t_list **b)

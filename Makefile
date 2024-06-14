@@ -1,5 +1,12 @@
 NAME = push_swap
 
+FLAGS = -Wall -Wextra -Werror
+
+LIBS = libft \
+
+INCLUDES =	includes \
+			${foreach lib, ${LIBS}, ${lib} ${lib}/includes}
+			
 SRCS_NAMES =	main.c \
 				parsing.c \
 				inputs.c \
@@ -15,34 +22,28 @@ OBJS_DIR = objs
 
 OBJS = ${addprefix ${OBJS_DIR}/, ${SRCS_NAMES:.c=.o}}
 
-INCLUDES = includes
-
-FLAGS = -Wall -Wextra -Werror
-
-LIBFT = libft
-
 all : ${NAME}
 
 ${NAME} : ${OBJS_DIR} ${OBJS}
-	make -C ${LIBFT}
-	cc ${OBJS} ${LIBFT}/libft.a -o $@
+	${foreach lib, ${LIBS}, make -C ${lib}}
+	cc ${FLAGS} ${OBJS} ${foreach lib, ${LIBS}, ${lib}/${lib}.a} -o $@
 
 ${OBJS_DIR} :
 	mkdir $@
 
 ${OBJS_DIR}/%.o : srcs/%.c
-	cc ${FLAGS} -I ${INCLUDES} -I ${LIBFT} -c $< -o $@
+	cc ${FLAGS} ${foreach include, ${INCLUDES}, -I ${include}} -c $< -o $@
 
 clean :
-	make clean -C ${LIBFT}
+	${foreach lib, ${LIBS}, make clean -C ${lib}}
 	rm -rf ${OBJS_DIR}
 
 fclean : clean
-	make fclean -C ${LIBFT}
+	${foreach lib, ${LIBS}, make fclean -C ${lib}}
 	rm -rf ${NAME}
 
 norm :
-	make norm -C ${LIBFT}
+	${foreach lib, ${LIBS}, make norm -C ${lib}}
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
 	norminette -R CheckDefine ${INCLUDES}
 

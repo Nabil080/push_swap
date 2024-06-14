@@ -15,7 +15,7 @@ OBJS_DIR = objs
 
 OBJS = ${addprefix ${OBJS_DIR}/, ${SRCS_NAMES:.c=.o}}
 
-HEADER = push_swap.h
+INCLUDES = includes
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -31,7 +31,7 @@ ${OBJS_DIR} :
 	mkdir $@
 
 ${OBJS_DIR}/%.o : srcs/%.c
-	cc ${FLAGS} -I . -I ${LIBFT} -c $< -o $@
+	cc ${FLAGS} -I ${INCLUDES} -I ${LIBFT} -c $< -o $@
 
 clean :
 	make clean -C ${LIBFT}
@@ -44,7 +44,7 @@ fclean : clean
 norm :
 	make norm -C ${LIBFT}
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
-	norminette -R CheckDefine ${HEADER}
+	norminette -R CheckDefine ${INCLUDES}
 
 test : all
 	./${NAME} 2 1 3 6 5 8

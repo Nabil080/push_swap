@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 20:15:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 15:53:27 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/14 16:20:37 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ static void	find_best_pb(t_list **a, t_list ** b)
 		return (pb(a, b));
 }
 
+//7-6-0-null | 2-9-null
+//7-6-0-9-null | 2-null
+//6-0-9-7-null | 2-null
+//0-9-7-6-null | 2-null
+//0-9-7-6-2-null | null
+//9-7-6-2-0-null | null
 static void find_best_pa(t_list **a, t_list **b)
 {
 	int	top_a;
@@ -56,6 +62,7 @@ static void find_best_pa(t_list **a, t_list **b)
 	
 	top_a = *(int *)ft_lstlast(*a)->content;
 	top_b = *(int *)ft_lstlast(*b)->content;
+	//todo si top_b > max de a, on peut push direct
 	//todo trouver le nbr de a avec la plus petite difference de top_b
 	//todo rotate pour que ce nbr soit en haut 
 	ft_printf("\n--------------------DEBUG--------------------\n\n");

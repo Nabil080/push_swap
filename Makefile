@@ -1,12 +1,18 @@
+######################## SETTINGS ########################
+
 NAME = push_swap
+
+CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-LIBS = libft \
+LIBS = libft
 
 INCLUDES =	includes \
 			${foreach lib, ${LIBS}, ${lib} ${lib}/includes}
-			
+
+######################## SOURCES ########################
+
 SRCS_NAMES =	main.c \
 				parsing.c \
 				inputs.c \
@@ -14,36 +20,40 @@ SRCS_NAMES =	main.c \
 				operations.c \
 				operations_2.c \
 				operations_utils.c \
-				solver.c \
+				solver.c
 
-SRCS = ${addprefix srcs/, ${SRCS_NAMES}}
+SRCS_DIR = srcs/
 
-OBJS_DIR = objs
+SRCS = ${addprefix ${SRCS_DIR}, ${SRCS_NAMES}}
 
-OBJS = ${addprefix ${OBJS_DIR}/, ${SRCS_NAMES:.c=.o}}
+OBJS_DIR = objs/
+
+OBJS = ${addprefix ${OBJS_DIR}, ${SRCS_NAMES:.c=.o}}
+
+######################## RULES ########################
 
 all : ${NAME}
 
 ${NAME} : ${OBJS_DIR} ${OBJS}
-	${foreach lib, ${LIBS}, make -C ${lib}}
-	cc ${FLAGS} ${OBJS} ${foreach lib, ${LIBS}, ${lib}/${lib}.a} -o $@
+	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
+	${CC} ${FLAGS} ${OBJS} ${foreach lib, ${LIBS}, ${lib}/${lib}.a} -o $@
 
 ${OBJS_DIR} :
 	mkdir $@
 
-${OBJS_DIR}/%.o : srcs/%.c
-	cc ${FLAGS} ${foreach include, ${INCLUDES}, -I ${include}} -c $< -o $@
+${OBJS_DIR}%.o : ${SRCS_DIR}%.c
+	${CC} ${FLAGS} ${CPPFLAGS} ${foreach include, ${INCLUDES}, -I ${include}} -c $< -o $@
 
 clean :
-	${foreach lib, ${LIBS}, make clean -C ${lib}}
+	${foreach lib, ${LIBS}, ${MAKE} clean -C ${lib}}
 	rm -rf ${OBJS_DIR}
 
 fclean : clean
-	${foreach lib, ${LIBS}, make fclean -C ${lib}}
-	rm -rf ${NAME}
+	${foreach lib, ${LIBS}, ${MAKE} fclean -C ${lib}}
+	rm -f ${NAME}
 
 norm :
-	${foreach lib, ${LIBS}, make norm -C ${lib}}
+	${foreach lib, ${LIBS}, ${MAKE} norm -C ${lib}}
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
 	norminette -R CheckDefine ${INCLUDES}
 
@@ -57,8 +67,6 @@ play_end :
 	mv srcs/main.c srcs/player.c
 	mv srcs/tmp.c srcs/main.c
 
-playtest : play test
-
 test : all
 	./${NAME} 2 9 7 0 6
 
@@ -68,4 +76,5 @@ error : all
 sort : all
 	./${NAME} 1 2 3 4 5 6
 
-re : fclean all
+re : fclean
+	${MAKE} all

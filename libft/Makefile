@@ -1,5 +1,10 @@
 NAME = libft.a
 
+FLAGS = -Wall -Wextra -Werror
+
+INCLUDES =	includes \
+			. \
+
 IS_CHECKERS_FILES =	ft_isalpha.c \
 					ft_isdigit.c \
 					ft_isalnum.c \
@@ -63,11 +68,6 @@ SRCS = ${addprefix srcs/, ${SRCS_NAMES}}
 OBJS_DIR = objs
 
 OBJS = ${addprefix ${OBJS_DIR}/, ${SRCS_NAMES:.c=.o}}
-
-INCLUDES =	includes \
-			. \
-
-FLAGS = -Wall -Wextra -Werror
 
 all: ${NAME}
 

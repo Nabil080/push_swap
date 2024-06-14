@@ -47,8 +47,20 @@ norm :
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
 	norminette -R CheckDefine ${INCLUDES}
 
+play : play_start re play_end
+
+play_start :
+	mv srcs/main.c srcs/tmp.c
+	mv srcs/player.c srcs/main.c
+
+play_end :
+	mv srcs/main.c srcs/player.c
+	mv srcs/tmp.c srcs/main.c
+
+playtest : play test
+
 test : all
-	./${NAME} 2 1 3 6 5 8
+	./${NAME} 2 9 7 0 6
 
 error : all
 	./${NAME} -2 1 +3 16 5a 8b

@@ -49,6 +49,7 @@ MEMORY_FILES =	ft_memset.c \
 
 CONVERTERS_FILES =	ft_itoa.c \
 					ft_atoi.c \
+					ft_abs.c \
 					ft_toupper.c \
 					ft_tolower.c
 
@@ -94,7 +95,7 @@ ${OBJS_DIR}:
 	mkdir ${OBJS_DIR}/linked_lists
 
 ${OBJS_DIR}%.o : ${SRCS_DIR}%.c
-	${CC} ${FLAGS} ${foreach include, ${INCLUDES}, -I ${include}} -c $< -o $@
+	${CC} ${FLAGS} ${foreach include, ${INCLUDES},-I ${include}} -c $< -o $@
 
 clean:
 	rm -rf ${OBJS_DIR}

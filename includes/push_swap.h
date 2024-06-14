@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:17:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/13 20:18:40 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:17:46 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ void	exit_success(t_list	*a, t_list	*b);
 * solver
 */
 void	push_swap_sort(t_list **a, t_list **b);
+/*
+* solver_utils
+*/
+t_list	*stack_max(t_list *stack);
+
+t_list	*stack_closest(t_list *stack, int nb);
+
+void	rotate_top(size_t index, t_list **a, t_list **b);
+
+void	rotate_bot(size_t index, t_list **a, t_list **b);
 /*
 * operations
 */

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:17:28 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 14:35:10 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:05:21 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	*ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+size_t	ft_lstindex(t_list *to_find, t_list *lst);
 
 #endif

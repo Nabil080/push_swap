@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 20:15:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 16:20:37 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:37:18 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,29 @@ static void	find_best_pb(t_list **a, t_list ** b)
 //0-9-7-6-null | 2-null
 //0-9-7-6-2-null | null
 //9-7-6-2-0-null | null
+
 static void find_best_pa(t_list **a, t_list **b)
 {
-	int	top_a;
-	int	top_b;
+	t_list	*top_b;
+	t_list	*closest;
+	size_t	closest_index;
 	
-	top_a = *(int *)ft_lstlast(*a)->content;
-	top_b = *(int *)ft_lstlast(*b)->content;
-	//todo si top_b > max de a, on peut push direct
-	//todo trouver le nbr de a avec la plus petite difference de top_b
-	//todo rotate pour que ce nbr soit en haut 
-	ft_printf("\n--------------------DEBUG--------------------\n\n");
-	ft_printf("TOP A : %d, TOP B : %d\n", top_a, top_b);
-	ft_printf("\n--------------------DEBUG--------------------\n\n");
+	top_b = ft_lstlast(*b)->content;
+	if (*(int*)top_b > *(int *)stack_max(*a)->content)
+		return (pa(a, b));
+	closest = stack_closest(*a, *(int*)top_b);
+	closest_index = ft_lstindex(closest, *a);
+	if (*(int*)closest->content - *(int*)top_b < 0)
+		rotate_bot(closest_index, a, b);
+	else
+		rotate_top(closest_index, a, b);
+	return (pa(a ,b));
 }
 
 static void	find_next_operation(t_list **a, t_list **b)
 {
-	//? si a = 2, trie done
 	if (ft_lstsize(*a) == 2)
 		sa(a, b);
-	//? si a = 3, trie done
 	else if (ft_lstsize(*a) == 3)
 		solve_size_3(a, b);
 	//todo si a > 3, push dans b au bon endroit
@@ -89,11 +91,8 @@ void	push_swap_sort(t_list **a, t_list **b)
 	//todo tant que a n'est pas trie, on cherche la meilleure operation
 	while (!is_sorted(a, NULL))
 		find_next_operation(a, b);
-	//? trouve le premier push dans a
-	find_best_pa(a, b);
-	//? tant que b n'est pas vide, on push dans a
 	while (ft_lstsize(*b) > 0)
-		pa(a, b);
+		find_best_pa(a, b);
 	//todo une fois que tout est au bon endroit dans a, on termine le tri (ra/rra)
 	// while (!is_sorted(a, NULL))
 	// {

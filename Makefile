@@ -20,6 +20,7 @@ SRCS_NAMES =	main.c \
 				operations.c \
 				operations_2.c \
 				operations_utils.c \
+				solver_utils.c \
 				solver.c
 
 SRCS_DIR = srcs/
@@ -36,13 +37,13 @@ all : ${NAME}
 
 ${NAME} : ${OBJS_DIR} ${OBJS}
 	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
-	${CC} ${FLAGS} ${OBJS} ${foreach lib, ${LIBS}, ${lib}/${lib}.a} -o $@
+	${CC} ${FLAGS} ${OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o $@
 
 ${OBJS_DIR} :
 	mkdir $@
 
 ${OBJS_DIR}%.o : ${SRCS_DIR}%.c
-	${CC} ${FLAGS} ${CPPFLAGS} ${foreach include, ${INCLUDES}, -I ${include}} -c $< -o $@
+	${CC} ${FLAGS} ${CPPFLAGS} ${foreach include, ${INCLUDES},-I ${include}} -c $< -o $@
 
 clean :
 	${foreach lib, ${LIBS}, ${MAKE} clean -C ${lib}}

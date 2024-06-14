@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 14:11:41 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 18:05:24 by nbellila         ###   ########.fr       */
+/*   Created: 2024/05/18 14:32:14 by nbellila          #+#    #+#             */
+/*   Updated: 2024/06/14 17:46:48 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_lstsize(t_list *lst)
+int	ft_abs(int nb)
 {
-	int	count;
-
-	count = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		count++;
-	}
-	return (count);
+	if (nb < 0)
+		nb *= -1;
+	return (nb);
 }

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:04:13 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/13 17:41:03 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:37:30 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,21 @@ t_list	*ft_lstlast_offset(t_list *lst, size_t offset)
 		i++;
 	}
 	return (lst);
+}
+
+size_t	ft_lstindex(t_list *to_find, t_list *lst)
+{
+	t_list	*current;
+	size_t	index;
+
+	index = 0;
+	current = lst;
+	while (current)
+	{
+		if (current == to_find)
+			break ;
+		current = current->next;
+		index++;
+	}
+	return (index);
 }

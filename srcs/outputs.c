@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:49:51 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/15 00:10:05 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 19:16:32 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static void	recursive_show_stacks(t_list *a, t_list *b)
 	else if (b && b->next)
 		recursive_show_stacks(NULL, b->next);
 	if (a && b)
-		ft_printf("\t%d\t %d\n", *(int *)a->content, *(int *)b->content);
+		ft_printf("\t%d\t %d\n", ft_lsttoi(a), ft_lsttoi(b));
 	else if (a)
-		ft_printf("\t%d\t x\n", *(int *)a->content);
+		ft_printf("\t%d\t x\n", ft_lsttoi(a));
 	else if (b)
-		ft_printf("\tx\t %d\n", *(int *)b->content);
+		ft_printf("\tx\t %d\n", ft_lsttoi(b));
 }
 
 void	show_stacks(t_list **a, t_list **b)
@@ -52,6 +52,6 @@ void	exit_success(t_list	*a, t_list	*b)
 {
 	ft_lstclear(&a, free);
 	ft_lstclear(&b, free);
-	ft_printf("Program successfully closed, everything freed\n");
+	// ft_printf("Program successfully closed, everything freed\n");
 	exit(EXIT_SUCCESS);
 }

@@ -6,61 +6,11 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:12:29 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 12:38:37 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:15:16 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_list	*stack_max(t_list *stack)
-{
-	t_list	*max;
-	t_list	*current;
-
-	max = stack;
-	current = stack->next;
-	while (current)
-	{
-		if (*(int*)max->content < *(int*)current->content)
-			max = current;
-		current = current->next;
-	}
-	return (max);
-}
-
-t_list	*stack_min(t_list *stack)
-{
-	t_list	*min;
-	t_list	*current;
-
-	min = stack;
-	current = stack->next;
-	while (current)
-	{
-		if (*(int*)min->content > *(int*)current->content)
-			min = current;
-		current = current->next;
-	}
-	return (min);
-}
-
-t_list	*stack_closest(t_list *stack, int nb)
-{
-	t_list	*closest;
-	t_list	*current;
-	int		current_nb;
-
-	closest = stack;
-	current = closest->next;
-	while (current)
-	{
-		current_nb = *(int*)current->content;
-		if (ft_abs(current_nb - nb) < ft_abs(*(int*)closest->content - nb))
-			closest = current;
-		current = current->next;
-	}
-	return (closest);
-}
 
 static size_t	get_top_cost(t_list *current, t_list *stack)
 {
@@ -74,22 +24,80 @@ static size_t	get_top_cost(t_list *current, t_list *stack)
 		cost = stack_size - current_index;
 	else
 		cost = current_index;
-	// ft_printf("size : %d, index : %d\n", stack_size, current_index);
 	return (cost);
 }
 
-size_t	get_pb_cost(t_list *current, t_list *a, t_list *b)
+static t_list	*get_target(t_list *current, t_list *stack)
+{
+	if (ft_lsttoi(current) > ft_lsttoi(stack_max(stack)))
+		return (stack_max(stack));
+	return (stack_closest(stack, ft_lsttoi(current)));
+}
+
+static size_t	get_pb_cost(t_list *current, t_list *a, t_list *b)
 {
 	t_list	*target;
 	size_t	a_cost;
 	size_t	b_cost;
+	size_t	cost;
 
-	if (ft_lsttoi(current) < ft_lsttoi(stack_min(b)))
-		target = (stack_max(b));
-	else
-		target = (stack_closest(b, ft_lsttoi(current)));
+	target = get_target(current, b);
 	a_cost = get_top_cost(current, a);
 	b_cost = get_top_cost(target, b);
-	ft_printf("Current : %d, target : %d, cost : %d + %d = %d\n",ft_lsttoi(current), ft_lsttoi(target), a_cost, b_cost, a_cost + b_cost);
-	return (a_cost + b_cost);
+	cost = a_cost + b_cost;
+
+	if (ft_lstindex(current, a) + 1 > ft_lstsize(a) / 2)
+		if (ft_lstindex(target, b) + 1 > ft_lstsize(b) / 2)
+			cost -= ft_min(a_cost, b_cost);
+	if (ft_lstindex(current, a) + 1 <= ft_lstsize(a) / 2)
+		if (ft_lstindex(target, b) + 1 <= ft_lstsize(b) / 2)
+			cost -= ft_min(a_cost, b_cost);
+	// ft_printf("Current : %d, target : %d, cost : %d + %d = %d\n",ft_lsttoi(current), ft_lsttoi(target), a_cost, b_cost, cost);
+	return (cost);
+}
+
+t_list	*get_cheapest_pb(t_list *a, t_list *b)
+{
+	t_list	*current;
+	t_list	*cheapest;
+
+	current = a;
+	cheapest = current;
+	while (current)
+	{
+		if (get_pb_cost(current, a, b) < get_pb_cost(cheapest, a, b))
+			cheapest = current;
+		current = current->next;
+	}
+	return (cheapest);
+}
+
+void	do_cheapest_pb(t_list *cheapest, t_list **a, t_list **b)
+{
+	t_list *target;
+
+	target = get_target(cheapest, *b);
+	ft_printf("TARGET : %d\n", ft_lsttoi(target));
+	while (cheapest->next || target->next)
+	{
+		if (cheapest->next && isabovemid(cheapest, *a))
+		{
+			if (target->next && isabovemid(target, *b))
+				rr(a, b);
+			else
+				ra(a, b);
+		}
+		else if (cheapest->next)
+		{
+			if (target->next && !isabovemid(target, *b))
+				rrr(a, b);
+			else
+				rra(a, b);
+		}
+		else if (target->next && isabovemid(cheapest, *a))
+			rb(a, b);
+		else if (target->next && !isabovemid(cheapest, *a))
+			rrb(a, b);
+	}
+	pb(a, b);
 }

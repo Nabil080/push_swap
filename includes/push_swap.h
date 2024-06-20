@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:17:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 12:15:02 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:55:41 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 * parsing	
 */
 void	args_check(size_t argc, char **argv);
+
 t_list	*parse_as_lst(size_t argc, char **argv);
+
+int	ft_min(int a, int b);
 /*
 * inputs
 */
@@ -41,15 +44,19 @@ void	exit_success(t_list	*a, t_list	*b);
 */
 void	push_swap_sort(t_list **a, t_list **b);
 /*
-* solver_utils
+* stack
 */
 t_list	*stack_max(t_list *stack);
 
 t_list	*stack_min(t_list *stack);
 
 t_list	*stack_closest(t_list *stack, int nb);
+/*
+* solver_utils
+*/
+t_list	*get_cheapest_pb(t_list *a, t_list *b);
 
-size_t	get_pb_cost(t_list *current, t_list *a, t_list *b);
+void	do_cheapest_pb(t_list *cheapest, t_list **a, t_list **b);
 /*
 * operations
 */

@@ -28,11 +28,11 @@
 */
 # include <stdlib.h>
 
+# include "linked_lists.h"
 # include "is_checkers.h"
 # include "strings.h"
 # include "converters.h"
 # include "memory.h"
 # include "printers.h"
-# include "linked_lists.h"
 
 #endif

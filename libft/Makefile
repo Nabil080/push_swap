@@ -15,6 +15,7 @@ IS_CHECKERS_FILES =	ft_isalpha.c \
 					ft_isdigit.c \
 					ft_isalnum.c \
 					ft_isascii.c \
+					ft_isabovemid.c \
 					ft_isprint.c
 
 PRINTERS_FILES =	ft_putchar_fd.c \

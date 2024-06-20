@@ -6,11 +6,18 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:19:49 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/13 20:57:52 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:11:03 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
 
 int	main(int argc, char *argv[])
 {

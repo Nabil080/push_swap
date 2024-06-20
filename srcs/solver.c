@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 20:15:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 12:30:07 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:04:15 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,13 @@ static void	solve_size_3(t_list **a, t_list **b)
 
 static void	find_best_pb(t_list **a, t_list **b)
 {
-	t_list	*current;
 	t_list	*cheapest;
-	size_t	cost;
 
 	if (ft_lstsize(*b) < 2)
 		return (pb(a, b));
-	//todo best push b
-	current = (*a);
-	cheapest = current;
-	while (current)
-	{
-		cost = get_pb_cost(current, *a, *b);
-		// ft_printf("Current : %d, cost : %d\n", ft_lsttoi(current), cost);
-		current = current->next;
-	}
-	while (1);
+	cheapest = get_cheapest_pb(*a, *b);
+	ft_printf("CHEAPEST : %d\n", ft_lsttoi(cheapest));
+	do_cheapest_pb(cheapest, a, b);
 }
 
 static void find_best_pa(t_list **a, t_list **b)
@@ -90,6 +81,7 @@ void	push_swap_sort(t_list **a, t_list **b)
 	//todo tant que a n'est pas trie, on cherche la meilleure operation
 	while (!is_sorted(a, NULL))
 		find_next_operation(a, b);
+	while(1);
 	while (ft_lstsize(*b) > 0)
 		find_best_pa(a, b);
 	while (!is_sorted(a, NULL))

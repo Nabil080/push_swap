@@ -49,6 +49,7 @@ MEMORY_FILES =	ft_memset.c \
 
 CONVERTERS_FILES =	ft_itoa.c \
 					ft_atoi.c \
+					ft_lsttoi.c \
 					ft_abs.c \
 					ft_toupper.c \
 					ft_tolower.c

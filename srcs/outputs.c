@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:49:51 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/13 20:33:06 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/15 00:10:05 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ static void	recursive_show_stacks(t_list *a, t_list *b)
 	else if (b && b->next)
 		recursive_show_stacks(NULL, b->next);
 	if (a && b)
-		ft_printf("    %d     %d\n", *(int *)a->content, *(int *)b->content);
+		ft_printf("\t%d\t %d\n", *(int *)a->content, *(int *)b->content);
 	else if (a)
-		ft_printf("    %d     x\n", *(int *)a->content);
+		ft_printf("\t%d\t x\n", *(int *)a->content);
 	else if (b)
-		ft_printf("    x     %d\n", *(int *)b->content);
+		ft_printf("\tx\t %d\n", *(int *)b->content);
 }
 
 void	show_stacks(t_list **a, t_list **b)
 {
-	ft_printf("    \n");
+	ft_printf("\t\n");
 	recursive_show_stacks(*a, *b);
-	ft_printf("    _     _\n");
-	ft_printf("    a     b\n\n");
+	ft_printf("\t_\t _\n");
+	ft_printf("\ta\t b\n\n");
 }
 
 void	exit_error(void)

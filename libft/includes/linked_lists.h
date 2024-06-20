@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:17:28 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 18:05:21 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/14 22:53:19 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*ft_lstnew(void *content);
 
 void	ft_lstadd_front(t_list **lst, t_list *new);
 
-int		ft_lstsize(t_list *lst);
+size_t	ft_lstsize(t_list *lst);
 
 t_list	*ft_lstlast(t_list *lst);
 

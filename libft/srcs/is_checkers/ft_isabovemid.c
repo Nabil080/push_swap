@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isabovemid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 11:50:33 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 14:58:07 by nbellila         ###   ########.fr       */
+/*   Created: 2024/06/20 14:56:08 by nbellila          #+#    #+#             */
+/*   Updated: 2024/06/20 14:58:14 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int	isabovemid(t_list *to_find, t_list *lst)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	if (ft_lstindex(to_find, lst) + 1 > ft_lstsize(lst) / 2)
+		return (1);
+	return (0);
 }

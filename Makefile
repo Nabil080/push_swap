@@ -21,8 +21,9 @@ SRCS_NAMES =	main.c \
 				operations_2.c \
 				operations_3.c \
 				operations_utils.c \
-				solver_utils.c \
-				solver.c
+				stack.c \
+				solver.c \
+				solver_utils.c
 
 SRCS_DIR = srcs/
 

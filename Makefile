@@ -19,6 +19,7 @@ SRCS_NAMES =	main.c \
 				outputs.c \
 				operations.c \
 				operations_2.c \
+				operations_3.c \
 				operations_utils.c \
 				solver_utils.c \
 				solver.c

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:12:29 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 18:37:25 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 12:38:37 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@ t_list	*stack_max(t_list *stack)
 	}
 	return (max);
 }
+
+t_list	*stack_min(t_list *stack)
+{
+	t_list	*min;
+	t_list	*current;
+
+	min = stack;
+	current = stack->next;
+	while (current)
+	{
+		if (*(int*)min->content > *(int*)current->content)
+			min = current;
+		current = current->next;
+	}
+	return (min);
+}
+
 t_list	*stack_closest(t_list *stack, int nb)
 {
 	t_list	*closest;
@@ -45,54 +62,34 @@ t_list	*stack_closest(t_list *stack, int nb)
 	return (closest);
 }
 
-void	rotate_top(size_t index, t_list **a, t_list **b)
+static size_t	get_top_cost(t_list *current, t_list *stack)
 {
-	size_t	lstsize;
+	size_t	current_index;
+	size_t	stack_size;
+	size_t	cost;
 
-	lstsize = ft_lstsize(*a);
-	// si index dans moitie basse, rotate vers le bas
-	if (index < lstsize / 2)
-	{
-		while (index > 0)
-		{
-			rra(a, b);
-			index--;
-		}
-		rra(a, b);
-	}
-	// sinon rotate vers le haut
+	current_index = ft_lstindex(current, stack) + 1;
+	stack_size = ft_lstsize(stack);
+	if (current_index > stack_size / 2)
+		cost = stack_size - current_index;
 	else
-	{
-		while (index + 1 < lstsize)
-		{
-			ra(a, b);
-			index++;
-		}
-	}
+		cost = current_index;
+	// ft_printf("size : %d, index : %d\n", stack_size, current_index);
+	return (cost);
 }
 
-void	rotate_bot(size_t index, t_list **a, t_list **b)
+size_t	get_pb_cost(t_list *current, t_list *a, t_list *b)
 {
-	size_t	lstsize;
+	t_list	*target;
+	size_t	a_cost;
+	size_t	b_cost;
 
-	lstsize = ft_lstsize(*a);
-	// si index dans moitie basse, rotate vers le bas
-	if (index < lstsize / 2)
-	{
-		while (index > 0)
-		{
-			rra(a, b);
-			index--;
-		}
-	}
-	// sinon rotate vers le haut
+	if (ft_lsttoi(current) < ft_lsttoi(stack_min(b)))
+		target = (stack_max(b));
 	else
-	{
-		while (index < lstsize)
-		{
-			ra(a, b);
-			index++;
-		}
-	}
+		target = (stack_closest(b, ft_lsttoi(current)));
+	a_cost = get_top_cost(current, a);
+	b_cost = get_top_cost(target, b);
+	ft_printf("Current : %d, target : %d, cost : %d + %d = %d\n",ft_lsttoi(current), ft_lsttoi(target), a_cost, b_cost, a_cost + b_cost);
+	return (a_cost + b_cost);
 }
-

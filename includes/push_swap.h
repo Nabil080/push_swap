@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:17:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 18:17:46 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 12:15:02 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	push_swap_sort(t_list **a, t_list **b);
 */
 t_list	*stack_max(t_list *stack);
 
+t_list	*stack_min(t_list *stack);
+
 t_list	*stack_closest(t_list *stack, int nb);
 
-void	rotate_top(size_t index, t_list **a, t_list **b);
-
-void	rotate_bot(size_t index, t_list **a, t_list **b);
+size_t	get_pb_cost(t_list *current, t_list *a, t_list *b);
 /*
 * operations
 */
@@ -84,5 +84,9 @@ void	rra(t_list **a, t_list **b);
 void	rrb(t_list **a, t_list **b);
 
 void	rrr(t_list **a, t_list **b);
+
+void	rotate_top(size_t index, t_list **a, t_list **b);
+
+void	rotate_bot(size_t index, t_list **a, t_list **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:17:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 13:55:41 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:51:43 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ t_list	*stack_max(t_list *stack);
 
 t_list	*stack_min(t_list *stack);
 
-t_list	*stack_closest(t_list *stack, int nb);
+t_list	*stack_closest_inferior(t_list *stack, int nb);
+
+t_list	*stack_closest_superior(t_list *stack, int nb);
 /*
 * solver_utils
 */

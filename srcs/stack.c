@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:49:26 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 15:10:36 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 19:08:34 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list	*stack_max(t_list *stack)
 	current = stack->next;
 	while (current)
 	{
-		if (*(int*)max->content < *(int*)current->content)
+		if (ft_lsttoi(max) < ft_lsttoi(current))
 			max = current;
 		current = current->next;
 	}
@@ -37,28 +37,43 @@ t_list	*stack_min(t_list *stack)
 	current = stack->next;
 	while (current)
 	{
-		if (*(int*)min->content > *(int*)current->content)
+		if (ft_lsttoi(min) > ft_lsttoi(current))
 			min = current;
 		current = current->next;
 	}
 	return (min);
 }
 
-t_list	*stack_closest(t_list *stack, int nb)
+t_list	*stack_closest_inferior(t_list *stack, int nb)
 {
 	t_list	*closest;
-	t_list	*current;
-	int		current_nb;
 
-	closest = stack_max(stack);
-	current = stack;
-	while (current)
+	if (nb < ft_lsttoi(stack_min(stack)))
+		return (stack_max(stack));
+	closest = NULL;
+	while (stack)
 	{
-		current_nb = *(int*)current->content;
-		// if (ft_abs(current_nb - nb) < ft_abs(*(int*)closest->content - nb))
-		if (nb > ft_lsttoi(current) && nb - ft_lsttoi(current) < ft_lsttoi(closest))
-			closest = current;
-		current = current->next;
+		if (nb > ft_lsttoi(stack))
+			if (!closest || nb - ft_lsttoi(stack) < nb - ft_lsttoi(closest))
+				closest = stack;
+		stack = stack->next;
+	}
+	return (closest);
+}
+
+t_list	*stack_closest_superior(t_list *stack, int nb)
+{
+	t_list	*closest;
+
+	if (nb > ft_lsttoi(stack_max(stack)))
+		return (stack_min(stack));
+	closest = NULL;
+	while (stack)
+	{
+		if (nb < ft_lsttoi(stack))
+			if (!closest || nb - ft_lsttoi(stack) > nb - ft_lsttoi(closest))
+				closest = stack;
+		stack = stack->next;
 	}
 	return (closest);
 }

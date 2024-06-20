@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:12:29 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 15:15:16 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 19:14:47 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_list	*get_target(t_list *current, t_list *stack)
 {
 	if (ft_lsttoi(current) > ft_lsttoi(stack_max(stack)))
 		return (stack_max(stack));
-	return (stack_closest(stack, ft_lsttoi(current)));
+	return (stack_closest_inferior(stack, ft_lsttoi(current)));
 }
 
 static size_t	get_pb_cost(t_list *current, t_list *a, t_list *b)
@@ -45,14 +45,12 @@ static size_t	get_pb_cost(t_list *current, t_list *a, t_list *b)
 	a_cost = get_top_cost(current, a);
 	b_cost = get_top_cost(target, b);
 	cost = a_cost + b_cost;
-
 	if (ft_lstindex(current, a) + 1 > ft_lstsize(a) / 2)
 		if (ft_lstindex(target, b) + 1 > ft_lstsize(b) / 2)
 			cost -= ft_min(a_cost, b_cost);
 	if (ft_lstindex(current, a) + 1 <= ft_lstsize(a) / 2)
 		if (ft_lstindex(target, b) + 1 <= ft_lstsize(b) / 2)
 			cost -= ft_min(a_cost, b_cost);
-	// ft_printf("Current : %d, target : %d, cost : %d + %d = %d\n",ft_lsttoi(current), ft_lsttoi(target), a_cost, b_cost, cost);
 	return (cost);
 }
 
@@ -74,10 +72,9 @@ t_list	*get_cheapest_pb(t_list *a, t_list *b)
 
 void	do_cheapest_pb(t_list *cheapest, t_list **a, t_list **b)
 {
-	t_list *target;
+	t_list	*target;
 
 	target = get_target(cheapest, *b);
-	ft_printf("TARGET : %d\n", ft_lsttoi(target));
 	while (cheapest->next || target->next)
 	{
 		if (cheapest->next && isabovemid(cheapest, *a))
@@ -94,9 +91,9 @@ void	do_cheapest_pb(t_list *cheapest, t_list **a, t_list **b)
 			else
 				rra(a, b);
 		}
-		else if (target->next && isabovemid(cheapest, *a))
+		else if (target->next && isabovemid(target, *b))
 			rb(a, b);
-		else if (target->next && !isabovemid(cheapest, *a))
+		else if (target->next && !isabovemid(target, *b))
 			rrb(a, b);
 	}
 	pb(a, b);

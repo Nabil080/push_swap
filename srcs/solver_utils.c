@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:12:29 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 19:14:47 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 19:25:45 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,19 @@ void	do_cheapest_pb(t_list *cheapest, t_list **a, t_list **b)
 			if (target->next && isabovemid(target, *b))
 				rr(a, b);
 			else
-				ra(a, b);
+				ra(a);
 		}
 		else if (cheapest->next)
 		{
 			if (target->next && !isabovemid(target, *b))
 				rrr(a, b);
 			else
-				rra(a, b);
+				rra(a);
 		}
 		else if (target->next && isabovemid(target, *b))
-			rb(a, b);
+			rb(b);
 		else if (target->next && !isabovemid(target, *b))
-			rrb(a, b);
+			rrb(b);
 	}
 	pb(a, b);
 }

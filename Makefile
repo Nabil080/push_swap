@@ -15,11 +15,9 @@ INCLUDES =	includes \
 
 SRCS_NAMES =	main.c \
 				parsing.c \
-				inputs.c \
 				outputs.c \
 				operations.c \
 				operations_2.c \
-				operations_3.c \
 				operations_utils.c \
 				stack.c \
 				solver.c \

@@ -6,11 +6,33 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:19:49 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 18:59:51 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 19:26:10 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sorted(t_list **a, t_list **b)
+{
+	t_list	*tested;
+	t_list	*itered;
+
+	if (b && ft_lstsize(*b) > 0)
+		return (0);
+	tested = *a;
+	while (tested->next)
+	{
+		itered = tested->next;
+		while (itered)
+		{
+			if (*(int *)tested->content < *(int *)itered->content)
+				return (0);
+			itered = itered->next;
+		}
+		tested = tested->next;
+	}
+	return (1);
+}
 
 int	ft_min(int a, int b)
 {

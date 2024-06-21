@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:17:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 17:15:54 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:46:16 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	exit_error(void);
 void	exit_malloc(void);
 
 void	exit_success(t_list	*a, t_list	*b);
+
+void	show_stacks(t_list *a, t_list *b);
 /*
 * solver
 */

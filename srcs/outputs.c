@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 13:49:51 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 19:19:33 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:46:00 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static void	recursive_show_stacks(t_list *a, t_list *b)
 		ft_printf("\tx\t %d\n", ft_lsttoi(b));
 }
 
-void	show_stacks(t_list **a, t_list **b)
+void	show_stacks(t_list *a, t_list *b)
 {
 	ft_printf("\t\n");
-	recursive_show_stacks(*a, *b);
+	recursive_show_stacks(a, b);
 	ft_printf("\t_\t _\n");
 	ft_printf("\ta\t b\n\n");
 }

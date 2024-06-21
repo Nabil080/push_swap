@@ -35,7 +35,9 @@ OBJS = ${addprefix ${OBJS_DIR}, ${SRCS_NAMES:.c=.o}}
 
 BONUS = checker
 
-BONUS_NAMES =	main_bonus.c
+BONUS_NAMES =	main_bonus.c \
+				parsing.c \
+				outputs.c
 
 BONUS_SRCS = ${addprefix ${SRCS_DIR}, ${BONUS_NAMES}}
 

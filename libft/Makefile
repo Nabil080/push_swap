@@ -28,6 +28,7 @@ PRINTERS_FILES =	ft_putchar_fd.c \
 STRINGS_FILES =	ft_strlen.c \
 				ft_strlcpy.c \
 				ft_strlcat.c \
+				ft_strcontains.c \
 				ft_strchr.c \
 				ft_strrchr.c \
 				ft_strncmp.c \
@@ -54,9 +55,13 @@ MEMORY_FILES =	ft_memset.c \
 CONVERTERS_FILES =	ft_itoa.c \
 					ft_atoi.c \
 					ft_lsttoi.c \
+					ft_lsttos.c \
 					ft_abs.c \
 					ft_toupper.c \
 					ft_tolower.c
+
+FILES_FILES =	get_next_line_utils.c \
+				get_next_line.c
 
 LINKED_LISTS_FILES =	ft_lstnew.c \
 						ft_lstadd_front.c \
@@ -73,6 +78,7 @@ SRCS_NAMES =	${addprefix is_checkers/, ${IS_CHECKERS_FILES}} \
 				${addprefix strings/, ${STRINGS_FILES}} \
 				${addprefix memory/, ${MEMORY_FILES}} \
 				${addprefix converters/, ${CONVERTERS_FILES}} \
+				${addprefix files/, ${FILES_FILES}} \
 				${addprefix linked_lists/, ${LINKED_LISTS_FILES}}
 
 SRCS_DIR = srcs/
@@ -98,6 +104,7 @@ ${OBJS_DIR}:
 	mkdir ${OBJS_DIR}/memory
 	mkdir ${OBJS_DIR}/converters
 	mkdir ${OBJS_DIR}/linked_lists
+	mkdir ${OBJS_DIR}/files
 
 ${OBJS_DIR}%.o : ${SRCS_DIR}%.c
 	${CC} ${FLAGS} ${foreach include, ${INCLUDES},-I ${include}} -c $< -o $@

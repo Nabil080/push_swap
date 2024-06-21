@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lsttoi.c                                        :+:      :+:    :+:   */
+/*   ft_lsttos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 01:28:10 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 18:13:00 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:16:31 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lsttoi(t_list *lst)
+char	*ft_lsttos(t_list *lst)
 {
-	return (*(int *)lst->content);
+	return ((char *)lst->content);
 }

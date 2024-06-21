@@ -7,7 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:58:27 by nbellila          #+#    #+#             */
 /*   Updated: 2024/05/18 14:35:07 by nbellila         ###   ########.fr       */
-/*                                                                            */
+/*                                 w                                           */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
@@ -27,11 +27,16 @@
 *	malloc / size_t
 */
 # include <stdlib.h>
+/*
+*	read / open
+*/
+# include <fcntl.h>
 
 # include "linked_lists.h"
 # include "is_checkers.h"
 # include "strings.h"
 # include "converters.h"
+# include "files.h"
 # include "memory.h"
 # include "printers.h"
 

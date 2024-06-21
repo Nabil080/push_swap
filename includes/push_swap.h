@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:17:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 19:22:59 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/20 19:33:58 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,9 @@ t_list	*parse_as_lst(size_t argc, char **argv);
 
 int		ft_min(int a, int b);
 /*
-* inputs
-*/
-void	get_user_input(t_list **a, t_list **b);
-/*
 * outputs
 */
-void	show_stacks(t_list **a, t_list **b);
-
-int		is_sorted(t_list **a, t_list **b);
+int		is_stack_sorted	(t_list *stack);
 
 void	exit_error(void);
 

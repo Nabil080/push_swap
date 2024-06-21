@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:17:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/20 19:33:58 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:15:54 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_min(int a, int b);
 /*
 * outputs
 */
-int		is_stack_sorted	(t_list *stack);
+int		is_stack_sorted(t_list *stack);
 
 void	exit_error(void);
 

@@ -1,43 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 17:19:49 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 17:39:07 by nbellila         ###   ########.fr       */
+/*   Created: 2024/06/21 17:22:51 by nbellila          #+#    #+#             */
+/*   Updated: 2024/06/21 17:38:52 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-int	is_stack_sorted(t_list *stack)
-{
-	t_list	*itered;
-
-	while (stack->next)
-	{
-		itered = stack->next;
-		while (itered)
-		{
-			if (ft_lsttoi(stack) < ft_lsttoi(itered))
-				return (0);
-			itered = itered->next;
-		}
-		stack = stack->next;
-	}
-	return (1);
-}
-
-int	ft_min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
@@ -47,6 +22,4 @@ int	main(int argc, char *argv[])
 	if (!a)
 		exit_malloc();
 	b = NULL;
-	push_swap_sort(&a, &b);
-	exit_success(a, b);
 }

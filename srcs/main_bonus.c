@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 17:22:51 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 17:49:17 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:56:16 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	main(int argc, char **argv)
 		exit_malloc();
 	b = NULL;
 	show_stacks(a, b);
+	ft_printf("next line : %s\n", get_next_line(1));
 	exit_success(a, b);
 }

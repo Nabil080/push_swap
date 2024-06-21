@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:20:11 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/14 14:30:51 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:28:57 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 
 char	**ft_split(char const *s, char c);
+
+void	*free_tab(char **tab, size_t size);
+
+size_t	ft_countwords(char const *s, char c);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 

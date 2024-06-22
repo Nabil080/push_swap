@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:20:11 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 18:55:27 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:57:25 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+int		ft_strcmp(const char *s1, const char *s2);
 
 int		ft_strcontains(char *str, char c);
 

@@ -6,29 +6,11 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:19:49 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 17:42:26 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:07:47 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	is_stack_sorted(t_list *stack)
-{
-	t_list	*itered;
-
-	while (stack->next)
-	{
-		itered = stack->next;
-		while (itered)
-		{
-			if (ft_lsttoi(stack) < ft_lsttoi(itered))
-				return (0);
-			itered = itered->next;
-		}
-		stack = stack->next;
-	}
-	return (1);
-}
 
 int	ft_min(int a, int b)
 {

@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:22:43 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 18:56:15 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:00:09 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ size_t	ft_lststrlen(t_list *lst)
 	while (lst)
 	{
 		i = 0;
-		while (ft_lsttos(lst)[i] && ft_lsttos(lst)[i] != '\n')
+		while (*((char *)lst->content + i) && *((char *)lst->content + i) != '\n')
 			i++;
 		total_len += i;
-		if (!lst->next && ft_lsttos(lst)[i] == '\n')
+		if (!lst->next && *(char *)lst->content + i == '\n')
 			total_len++;
 		lst = lst->next;
 	}
@@ -40,9 +40,33 @@ int	ft_lstcontains(t_list *lst, char c)
 	current = lst;
 	while (current)
 	{
-		if (ft_strcontains(ft_lsttos(current), c) >= 0)
+		if (ft_strcontains(current->content, c) >= 0)
 			return (1);
 		current = current->next;
 	}
 	return (0);
 }
+
+int	ft_strcontains(char *str, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+/*
+int main(void)
+{
+        int i;
+        int *ptr = NULL;
+
+        i = *ptr;
+        return (0);
+}
+*/

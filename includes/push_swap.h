@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:17:03 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 17:46:16 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:03:02 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,5 @@ void	rra(t_list **a);
 void	rrb(t_list **b);
 
 void	rrr(t_list **a, t_list **b);
-
-void	rotate_top(size_t index, t_list **a, t_list **b);
-
-void	rotate_bot(size_t index, t_list **a, t_list **b);
 
 #endif

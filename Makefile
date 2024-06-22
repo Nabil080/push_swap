@@ -37,6 +37,10 @@ BONUS = checker
 
 BONUS_NAMES =	main_bonus.c \
 				parsing.c \
+				stack.c \
+				operations.c \
+				operations_2.c \
+				operations_utils.c \
 				outputs.c
 
 BONUS_SRCS = ${addprefix ${SRCS_DIR}, ${BONUS_NAMES}}

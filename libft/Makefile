@@ -11,26 +11,27 @@ INCLUDES =	includes \
 
 ######################## SOURCES ########################
 
-IS_CHECKERS_FILES =	ft_isalpha.c \
+IS_CHECKERS =	ft_isalpha.c \
 					ft_isdigit.c \
 					ft_isalnum.c \
 					ft_isascii.c \
 					ft_isabovemid.c \
 					ft_isprint.c
 
-PRINTERS_FILES =	ft_putchar_fd.c \
+PRINTERS =	ft_putchar_fd.c \
 					ft_putstr_fd.c \
 					ft_putendl_fd.c \
 					ft_putnbr_fd.c \
 					ft_putnbr_base.c \
 					ft_printf.c
 
-STRINGS_FILES =	ft_strlen.c \
+STRINGS =	ft_strlen.c \
 				ft_strlcpy.c \
 				ft_strlcat.c \
 				ft_strcontains.c \
 				ft_strchr.c \
 				ft_strrchr.c \
+				ft_strcmp.c \
 				ft_strncmp.c \
 				ft_strnstr.c \
 				ft_strdup.c \
@@ -44,7 +45,7 @@ STRINGS_FILES =	ft_strlen.c \
 				ft_strmapi.c \
 				ft_striteri.c
 
-MEMORY_FILES =	ft_memset.c \
+MEMORY =	ft_memset.c \
 				ft_memcpy.c \
 				ft_memmove.c \
 				ft_memchr.c \
@@ -52,7 +53,7 @@ MEMORY_FILES =	ft_memset.c \
 				ft_bzero.c \
 				ft_calloc.c
 
-CONVERTERS_FILES =	ft_itoa.c \
+CONVERTERS =	ft_itoa.c \
 					ft_atoi.c \
 					ft_lsttoi.c \
 					ft_lsttos.c \
@@ -60,10 +61,10 @@ CONVERTERS_FILES =	ft_itoa.c \
 					ft_toupper.c \
 					ft_tolower.c
 
-FILES_FILES =	get_next_line_utils.c \
-				get_next_line.c
+READ_FILES =	get_next_line.c \
+				get_next_line_utils.c
 
-LINKED_LISTS_FILES =	ft_lstnew.c \
+LINKED_LISTS =	ft_lstnew.c \
 						ft_lstadd_front.c \
 						ft_lstsize.c \
 						ft_lstlast.c \
@@ -73,13 +74,13 @@ LINKED_LISTS_FILES =	ft_lstnew.c \
 						ft_lstiter.c \
 						ft_lstmap.c
 
-SRCS_NAMES =	${addprefix is_checkers/, ${IS_CHECKERS_FILES}} \
-				${addprefix printers/, ${PRINTERS_FILES}} \
-				${addprefix strings/, ${STRINGS_FILES}} \
-				${addprefix memory/, ${MEMORY_FILES}} \
-				${addprefix converters/, ${CONVERTERS_FILES}} \
-				${addprefix files/, ${FILES_FILES}} \
-				${addprefix linked_lists/, ${LINKED_LISTS_FILES}}
+SRCS_NAMES =	${addprefix is_checkers/, ${IS_CHECKERS}} \
+				${addprefix printers/, ${PRINTERS}} \
+				${addprefix strings/, ${STRINGS}} \
+				${addprefix memory/, ${MEMORY}} \
+				${addprefix converters/, ${CONVERTERS}} \
+				${addprefix read_files/, ${READ_FILES}} \
+				${addprefix linked_lists/, ${LINKED_LISTS}}
 
 SRCS_DIR = srcs/
 
@@ -104,7 +105,7 @@ ${OBJS_DIR}:
 	mkdir ${OBJS_DIR}/memory
 	mkdir ${OBJS_DIR}/converters
 	mkdir ${OBJS_DIR}/linked_lists
-	mkdir ${OBJS_DIR}/files
+	mkdir ${OBJS_DIR}/read_files
 
 ${OBJS_DIR}%.o : ${SRCS_DIR}%.c
 	${CC} ${FLAGS} ${foreach include, ${INCLUDES},-I ${include}} -c $< -o $@

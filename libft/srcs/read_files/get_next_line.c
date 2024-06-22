@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:07:00 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/21 18:56:14 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:30:39 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int	read_line(t_list **lst, int fd)
 		if (!new)
 			return (0);
 		new->content = malloc((BUFFER_SIZE + 1) * sizeof(char));
-		if (!ft_lsttos(new))
+		if (!new->content)
 		{
 			free(new);
 			return (0);
 		}
-		read_count = read(fd, ft_lsttos(new), BUFFER_SIZE);
-		ft_lsttos(new)[read_count] = 0;
+		read_count = read(fd, new->content, BUFFER_SIZE);
+		*((char *)new->content + read_count) = 0;
 		new->next = NULL;
 		ft_lstadd_back(lst, new);
 	}
@@ -72,13 +72,13 @@ char	*lst_to_line(t_list *lst)
 	while (lst)
 	{
 		i = 0;
-		while (ft_lsttos(lst)[i] && ft_lsttos(lst)[i] != '\n')
+		while (*(char *)lst->content + i && *((char *)(lst->content + i)) != '\n')
 		{
-			line[total_len] = ft_lsttos(lst)[i];
+			line[total_len] = *((char *)lst->content + i );
 			total_len++;
 			i++;
 		}
-		if (ft_lsttos(lst)[i] == '\n')
+		if (*((char *)(lst->content + i )) == '\n')
 			line[total_len++] = '\n';
 		lst = lst->next;
 	}
@@ -89,16 +89,66 @@ char	*lst_to_line(t_list *lst)
 int	clean_lst(t_list **lst)
 {
 	char	*clean;
-	t_list	*last;
+	t_list	*current;
+	t_list	*next;
 
-	last = ft_lstlast(*lst);
-	ft_lstlast_offset(*lst, 1)->next = NULL;
-	ft_lstclear(lst, free);
-	clean = ft_strdup(&ft_lsttos(last)[ft_strcontains(ft_lsttos(last), '\n') + 1]);
+	current = *lst;
+	while (current->next)
+	{
+		next = current->next;
+		free(current->content);
+		free(current);
+		current = next;
+	}
+	clean = ft_strdup(&current->content[ft_strcontains(current->content, '\n') + 1]);
 	if (!clean)
 		return (0);
-	free(last->content);
-	last->content = clean;
-	*lst = last;
+	free(current->content);
+	current->content = clean;
+	*lst = current;
 	return (1);
 }
+/*
+int	main(int argc, char **argv)
+{
+	char	*line;
+	size_t	i;
+	size_t	count;
+	int empty;
+	int	fd;
+	int	fd2;
+
+	if (argc < 2)
+		count = 5;
+	else
+		count = atoi(argv[1]);
+	empty = open("empty", O_RDONLY);
+	fd = open("fd1", O_RDONLY);
+	fd2 = open("fd2", O_RDONLY);
+	printf("Buffer size : %d\n", BUFFER_SIZE);
+	i = 0;
+	while (i < count)
+	{
+		if (argc > 2 && i % 2)
+			line = get_next_line(fd2);
+		else
+			line = get_next_line(empty);
+		printf("---Line %zu---\n", i + 1);
+		printf("%s", line);
+		free(line);
+		i++;
+	}
+	close(empty);
+	close(fd);
+	close(fd2);
+	return (0);
+}
+*/
+/*
+int main(void)
+{
+	int fd = open("slt", O_RDONLY);
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+}
+*/

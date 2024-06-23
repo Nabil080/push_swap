@@ -38,9 +38,9 @@ BONUS = checker
 BONUS_NAMES =	main_bonus.c \
 				parsing.c \
 				stack.c \
-				operations.c \
-				operations_2.c \
-				operations_utils.c \
+				operations_bonus.c \
+				operations_2_bonus.c \
+				operations_utils_bonus.c \
 				outputs.c
 
 BONUS_SRCS = ${addprefix ${SRCS_DIR}, ${BONUS_NAMES}}
@@ -66,6 +66,7 @@ fclean : clean
 norm :
 	${foreach lib, ${LIBS}, ${MAKE} norm -C ${lib}}
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
+	norminette -R CheckForbiddenSourceHeader ${BONUS_SRCS}
 	norminette -R CheckDefine ${INCLUDES}
 	
 ######################## COMPILATION ########################

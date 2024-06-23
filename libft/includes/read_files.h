@@ -6,12 +6,12 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:31:43 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/22 15:30:03 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:06:46 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef READ_FILES_H
+# define READ_FILES_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000

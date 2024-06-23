@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 17:22:51 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/22 16:08:58 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:14:24 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 			exit_error();
 		}
 		free(operation);
-		operation = get_next_line(1);
+		operation = get_next_line(0);
 	}
 	if (is_stack_sorted(a))
 		ft_printf("OK\n");

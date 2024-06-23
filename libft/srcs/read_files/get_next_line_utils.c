@@ -6,7 +6,7 @@
 /*   By: nbellila <nbellila@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:22:43 by nbellila          #+#    #+#             */
-/*   Updated: 2024/06/22 15:00:09 by nbellila         ###   ########.fr       */
+/*   Updated: 2024/06/22 17:58:50 by nbellila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ size_t	ft_lststrlen(t_list *lst)
 	while (lst)
 	{
 		i = 0;
-		while (*((char *)lst->content + i) && *((char *)lst->content + i) != '\n')
+		while (ft_lsttos(lst)[i] && ft_lsttos(lst)[i] != '\n')
 			i++;
 		total_len += i;
-		if (!lst->next && *(char *)lst->content + i == '\n')
+		if (!lst->next && ft_lsttos(lst)[i] == '\n')
 			total_len++;
 		lst = lst->next;
 	}
@@ -60,13 +60,3 @@ int	ft_strcontains(char *str, char c)
 	}
 	return (-1);
 }
-/*
-int main(void)
-{
-        int i;
-        int *ptr = NULL;
-
-        i = *ptr;
-        return (0);
-}
-*/

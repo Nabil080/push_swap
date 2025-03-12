@@ -2,7 +2,7 @@
 
 NAME = push_swap
 
-CC = cc
+CC = clang
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -17,7 +17,6 @@ SRCS_NAMES =	main.c \
 				parsing.c \
 				outputs.c \
 				operations.c \
-				operations_2.c \
 				operations_utils.c \
 				stack.c \
 				solver.c \
@@ -31,21 +30,20 @@ OBJS_DIR = objs/
 
 OBJS = ${addprefix ${OBJS_DIR}, ${SRCS_NAMES:.c=.o}}
 
-######################## BONUS ########################
+######################## CHECKER ########################
 
-BONUS = checker
+CHECKER = checker
 
-BONUS_NAMES =	main_bonus.c \
+CHECKER_NAMES =	checker.c \
 				parsing.c \
 				stack.c \
-				operations_bonus.c \
-				operations_2_bonus.c \
-				operations_utils_bonus.c \
+				operations.c \
+				operations_utils.c \
 				outputs.c
 
-BONUS_SRCS = ${addprefix ${SRCS_DIR}, ${BONUS_NAMES}}
+CHECKER_SRCS = ${addprefix ${SRCS_DIR}, ${CHECKER_NAMES}}
 
-BONUS_OBJS = ${addprefix ${OBJS_DIR}, ${BONUS_NAMES:.c=.o}}
+CHECKER_OBJS = ${addprefix ${OBJS_DIR}, ${CHECKER_NAMES:.c=.o}}
 
 ######################## BASIC RULES ########################
 
@@ -61,12 +59,12 @@ clean :
 fclean : clean
 	${foreach lib, ${LIBS}, ${MAKE} fclean -C ${lib}}
 	rm -f ${NAME}
-	rm -f ${BONUS}
+	rm -f ${CHECKER}
 
 norm :
 	${foreach lib, ${LIBS}, ${MAKE} norm -C ${lib}}
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
-	norminette -R CheckForbiddenSourceHeader ${BONUS_SRCS}
+	norminette -R CheckForbiddenSourceHeader ${CHECKER_SRCS}
 	norminette -R CheckDefine ${INCLUDES}
 	
 ######################## COMPILATION ########################
@@ -104,10 +102,11 @@ error : all
 sort : all
 	./${NAME} 1 2 3 4 5 6
 
-######################## BONUS ########################
+######################## CHECKER ########################
 
-bonus : ${BONUS}
+bonus : ${CHECKER}
 
-${BONUS} : ${OBJS_DIR} ${BONUS_OBJS}
+${CHECKER} : ${OBJS_DIR} ${CHECKER_OBJS}
 	${foreach lib, ${LIBS}, ${MAKE} -C ${lib}}
-	${CC} ${FLAGS} ${BONUS_OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o $@
+	${CC} ${FLAGS} -DCHECKER=1 ${CHECKER_OBJS} ${foreach lib, ${LIBS},${lib}/${lib}.a} -o $@
+

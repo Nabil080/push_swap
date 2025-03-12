@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-int	ft_min(int a, int b)
+int ft_min(int a, int b)
 {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	t_list	*a;
-	t_list	*b;
+	t_list *a;
+	t_list *b;
 
 	args_check(argc, argv);
 	a = parse_as_lst(argc, argv);

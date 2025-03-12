@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	recursive_show_stacks(t_list *a, t_list *b)
+static void recursive_show_stacks(t_list *a, t_list *b)
 {
 	if ((a && a->next) && (b && b->next))
 		recursive_show_stacks(a->next, b->next);
@@ -28,7 +28,7 @@ static void	recursive_show_stacks(t_list *a, t_list *b)
 		ft_printf("\tx\t %d\n", ft_lsttoi(b));
 }
 
-void	show_stacks(t_list *a, t_list *b)
+void show_stacks(t_list *a, t_list *b)
 {
 	ft_printf("\t\n");
 	recursive_show_stacks(a, b);
@@ -36,19 +36,19 @@ void	show_stacks(t_list *a, t_list *b)
 	ft_printf("\ta\t b\n\n");
 }
 
-void	exit_error(void)
+void exit_error(void)
 {
 	ft_printf("Error\n");
 	exit(EXIT_FAILURE);
 }
 
-void	exit_malloc(void)
+void exit_malloc(void)
 {
 	ft_printf("A malloc failed\n");
 	exit(EXIT_FAILURE);
 }
 
-void	exit_success(t_list	*a, t_list	*b)
+void exit_success(t_list *a, t_list *b)
 {
 	ft_lstclear(&a, free);
 	ft_lstclear(&b, free);

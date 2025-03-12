@@ -11,83 +11,86 @@
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#define PUSH_SWAP_H
 
-# include "libft.h"
+#include "libft.h"
 
+#ifndef PRINT
+#	define PRINT 1
+#endif
 /*
-* parsing	
-*/
+ * parsing
+ */
 void	args_check(size_t argc, char **argv);
 
-t_list	*parse_as_lst(size_t argc, char **argv);
+t_list *parse_as_lst(size_t argc, char **argv);
 
 int		ft_min(int a, int b);
 /*
-* outputs
-*/
+ * outputs
+ */
 int		is_stack_sorted(t_list *stack);
 
 void	exit_error(void);
 
 void	exit_malloc(void);
 
-void	exit_success(t_list	*a, t_list	*b);
+void	exit_success(t_list *a, t_list *b);
 
 void	show_stacks(t_list *a, t_list *b);
 /*
-* solver
-*/
+ * solver
+ */
 void	push_swap_sort(t_list **a, t_list **b);
 /*
-* stack
-*/
-t_list	*stack_max(t_list *stack);
+ * stack
+ */
+t_list *stack_max(t_list *stack);
 
-t_list	*stack_min(t_list *stack);
+t_list *stack_min(t_list *stack);
 
-t_list	*stack_closest_inferior(t_list *stack, int nb);
+t_list *stack_closest_inferior(t_list *stack, int nb);
 
-t_list	*stack_closest_superior(t_list *stack, int nb);
+t_list *stack_closest_superior(t_list *stack, int nb);
 /*
-* solver_utils
-*/
-t_list	*get_cheapest_pb(t_list *a, t_list *b);
+ * solver_utils
+ */
+t_list *get_cheapest_pb(t_list *a, t_list *b);
 
 void	do_cheapest_pb(t_list *cheapest, t_list **a, t_list **b);
 /*
-* operations
-*/
-typedef void	(*t_operations)(t_list **, t_list **);
+ * operations
+ */
+typedef void (*t_operations)(t_list **, t_list **);
 
-void	swap_top(t_list **stack);
+void swap_top(t_list **stack);
 
-void	sa(t_list **a);
+void sa(t_list **a);
 
-void	sb(t_list **b);
+void sb(t_list **b);
 
-void	ss(t_list **a, t_list **b);
+void ss(t_list **a, t_list **b);
 
-void	push_top(t_list **src, t_list **dst);
+void push_top(t_list **src, t_list **dst);
 
-void	pa(t_list **a, t_list **b);
+void pa(t_list **a, t_list **b);
 
-void	pb(t_list **a, t_list **b);
+void pb(t_list **a, t_list **b);
 
-void	rotate(t_list **stack);
+void rotate(t_list **stack);
 
-void	ra(t_list **a);
+void ra(t_list **a);
 
-void	rb(t_list **b);
+void rb(t_list **b);
 
-void	rr(t_list **a, t_list **b);
+void rr(t_list **a, t_list **b);
 
-void	reverse_rotate(t_list **stack);
+void reverse_rotate(t_list **stack);
 
-void	rra(t_list **a);
+void rra(t_list **a);
 
-void	rrb(t_list **b);
+void rrb(t_list **b);
 
-void	rrr(t_list **a, t_list **b);
+void rrr(t_list **a, t_list **b);
 
 #endif

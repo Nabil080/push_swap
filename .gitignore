@@ -1,8 +1,9 @@
-.vscode
+.*
 *.out
 *.a
 *.o
 objs
 push_swap
+checker
 push_swap_visualizer/
-checker*
+compile_commands.json

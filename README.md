@@ -4,6 +4,11 @@
 
 **Push_swap** is a sorting algorithm project that challenges you to sort a stack of integers using a limited set of operations while minimizing the number of moves. This project is a great introduction to algorithmic complexity and optimization.
 
+![ScreencastFrom2025-08-0616-34-41-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/a69e9db2-38ba-42c3-80a4-4bba44c09952)
+
+Visualizer made by @o-reo. [repo](https://github.com/o-reo/push_swap_visualizer)
+
+
 ## Objectives
 
 - Implement an efficient sorting algorithm using stack operations.
